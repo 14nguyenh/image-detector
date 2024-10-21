@@ -14,6 +14,8 @@ Imagga keys are hard coded and can be re-set in application.properties.
 
 ### POST
 
+only accepts jpg, jpeg, or png files
+
 image upload: convert image to base64 and upload it in json payload
 
 base64 -i horse.jpg -o horse_base64.txt
@@ -23,7 +25,7 @@ curl -X POST http://localhost:8080/images -H "Content-Type: application/json" -d
 
 image url:
 
-curl -X POST http://localhost:8080/images -H "Content-Type: application/json" -d "{\"url\": \"<url goes here>\",\"objectDetection\": true}"
+curl -X POST http://localhost:8080/images -H "Content-Type: application/json" -d "{\"url\": \"https://testurl.com/testimage.jpg\",\"objectDetection\": true}"
 
 ### GET
 

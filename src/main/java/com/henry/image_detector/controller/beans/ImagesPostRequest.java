@@ -11,7 +11,7 @@ public class ImagesPostRequest {
 	private String data;
 	private String fileName;
 
-	@Pattern(regexp = "^(https?://.*\\.(jpg|jpeg|png|gif))$", message = "Invalid image URL")
+	@Pattern(regexp = "^(https?://.*\\.(jpg|jpeg|png))$", message = "Invalid image URL")
 	private String url;
 
 	private boolean objectDetection;
