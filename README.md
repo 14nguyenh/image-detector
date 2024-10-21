@@ -3,6 +3,7 @@
 ## Build and run
 
 ./gradlew clean build
+
 ./gradlew bootRun
 
 ## Configuration
@@ -16,7 +17,9 @@ Imagga keys are hard coded and can be re-set in application.properties.
 image upload: convert image to base64 and upload it in json payload
 
 base64 -i horse.jpg -o horse_base64.txt
+
 curl -X POST http://localhost:8080/images -H "Content-Type: application/json" -d "{\"data\": \"$(cat horse_base64.txt)\",\"dataType\": \"jpg\",\"objectDetection\": true}"
+
 
 image url:
 
