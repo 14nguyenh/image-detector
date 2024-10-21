@@ -118,7 +118,7 @@ public class ImageService {
 
 		if (tags != null && image.isObjectDetection()) {
 			LOG.info("Object detection enabled");
-			detectedObjectEntities = saveImageObjects(tags.getResult().getTags(), imageId, imageEntity);
+			detectedObjectEntities = saveImageObjects(tags.getResult().getTags(), imageEntity);
 		}
 
 		return toDto(imageEntity, detectedObjectEntities, imageId, imageName);
@@ -141,9 +141,9 @@ public class ImageService {
 			BufferedImage image = ImageIO.read(imageFile);
 			ImageEntity imageEntity = new ImageEntity.Builder()
 					.withUuid(imageId)
-					.withWidth(image.getWidth())
-					.withHeight(image.getHeight())
-					.withType(image.getType())
+					.withWidth(image != null ? image.getWidth() : 0)
+					.withHeight(image != null ? image.getHeight() : 0)
+					.withType(image != null ? image.getType() : 0)
 					.withSize(imageFile.getAbsoluteFile().length())
 					.build();
 
@@ -155,7 +155,7 @@ public class ImageService {
 		}
 	}
 
-	private List<DetectedObjectEntity> saveImageObjects(final List<GetTagsResponse.TagConfidence> tagConfidences, final UUID imageId, final ImageEntity imageEntity) {
+	private List<DetectedObjectEntity> saveImageObjects(final List<GetTagsResponse.TagConfidence> tagConfidences, final ImageEntity imageEntity) {
 		List<DetectedObjectEntity> detectedObjects = new ArrayList<>();
 		for (GetTagsResponse.TagConfidence tagConfidence : tagConfidences) {
 			String objectDetected = tagConfidence.getTag().getEn();
