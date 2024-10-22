@@ -31,5 +31,5 @@ curl -X POST http://localhost:8080/images -H "Content-Type: application/json" -d
 
 curl -X GET http://localhost:8080/images
 
-curl -X GET http://localhost:8080/images?objects="horse"
+curl -X GET 'http://localhost:8080/images?objects=horse'
 
